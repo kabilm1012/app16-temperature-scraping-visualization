@@ -2,6 +2,7 @@ from webscrape import scrape, extract
 from text_data import read, store
 import time
 
+
 PATH = "temp_data.txt"
 URL = "https://programmer100.pythonanywhere.com/"
 HEADERS = {
@@ -12,4 +13,7 @@ if __name__ == "__main__":
     extracted = extract(scraped)
     
     datetime = time.strftime(r"%Y/%m/%d - %H:%M:%S")
-    store(PATH, f"{datetime}, {extracted}")
+    store(PATH, f"{datetime},{extracted}")
+
+    temp_data = read(PATH)
+    
