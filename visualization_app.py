@@ -1,14 +1,17 @@
 import streamlit as st
 import plotly.express as px
-import pandas as pd
+from database_handling import read
 
 PATH = "temp_data.txt"
 
 st.title("Average World Temperature")
 
-df = pd.read_csv(PATH)
-date = df["date"]
-temperature = df["temperature"]
+data = read()
+date = []
+temperature=[]
+for i in data:
+    date.append(i[0])
+    temperature.append(i[1])
 
 figure = px.line(x=date, y=temperature,
                  labels={"x": "Date", "y": "Avearge world temperature (C)"})
